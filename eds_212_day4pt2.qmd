@@ -20,9 +20,7 @@ Check out your data a bit:
 
 Remember that typing view(penguins) in the console or code chunk will bring up the data frame for you to view the data
 
-in Quarto:
-putting "#| warning in the opening code chunk: false" in your opening code chunk immediately below "{R}" makes it refrain from printing the warnings through whole document
-putting "#| echo in the opening code chunk: false" in your opening code chunk prevents it from printing the code through whole document
+in Quarto: putting "#\| warning in the opening code chunk: false" in your opening code chunk immediately below "{R}" makes it refrain from printing the warnings through whole document putting "#\| echo in the opening code chunk: false" in your opening code chunk prevents it from printing the code through whole document
 
 Similar capabilities in RMarkdown but different code
 
@@ -40,7 +38,7 @@ head(penguins)
 tail(penguins)
 ```
 
-"#| include: false" in a code chunk makes the chunk not show up bc it's not being included
+"#\| include: false" in a code chunk makes the chunk not show up bc it's not being included
 
 ```{r}
 #| echo: false
@@ -89,5 +87,3 @@ ggplot(data = penguins, aes(x = bill_length_mm)) +
 #color of polygons are changed with fill aesthetics, color of dots and lines are changed with color aesthetics
 #global changes to your colors should be done outside of aes()
 ```
-
-

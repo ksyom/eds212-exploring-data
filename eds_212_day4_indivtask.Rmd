@@ -1,0 +1,47 @@
+---
+title: "r-exploring"
+author: "kimberly yom"
+date: "2022-08-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(skimr)
+library(GGally)
+```
+
+```{r}
+names(diamonds)
+
+dim(diamonds)
+
+summary(diamonds)
+
+skim(diamonds)
+
+head(diamonds)
+
+tail(diamonds)
+
+```
+
+```{r}
+#ggpairs(data = diamonds)
+#commenting ggpairs out because otherwise it takes forever to render
+
+```
+
+```{r}
+ggplot(data = diamonds, aes(x = carat, y = price), width = 0.5, alpha = 0.2) + geom_point(aes(color = carat)) + 
+  theme_minimal()+
+  labs(x = "Carat Size", y = "Price in Probably USD", title = "Diamond Price by Carat Size")
+```
+
+```{r}
+ggplot(data = diamonds, aes(x = carat)) + geom_histogram(color = "magenta", fill = "goldenrod") + labs(x = "Carat Size", y = "Price in Probably USD", title = "Diamond Prices") + theme_minimal()
+```
+
+
+
