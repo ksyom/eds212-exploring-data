@@ -21,8 +21,8 @@ Check out your data a bit:
 Remember that typing view(penguins) in the console or code chunk will bring up the data frame for you to view the data
 
 in Quarto:
-putting #| warning in the opening code chunk: false makes it refrain from printing the warnings
-putting #| echo in the opening code chunk: false prevents it from printing the code 
+putting "#| warning in the opening code chunk: false" in your opening code chunk immediately below "{R}" makes it refrain from printing the warnings through whole document
+putting "#| echo in the opening code chunk: false" in your opening code chunk prevents it from printing the code through whole document
 
 Similar capabilities in RMarkdown but different code
 
@@ -37,8 +37,57 @@ dim(penguins)
 #Can you show me the first six lines?
 head(penguins)
 #Can you show me the last 6 lines?
-  tail(penguins)
+tail(penguins)
 ```
 
-#| include: false in a code chunk makes the chunk not show up bc it's not being included
+"#| include: false" in a code chunk makes the chunk not show up bc it's not being included
+
+```{r}
+#| echo: false
+2+10
+```
+
+```{r}
+#skim() produces a great overview of the data
+skim(penguins)
+```
+
+```{r}
+#packagename:: will bring up all functions of a package
+#GGally::ggpairs(penguins)
+#commented out GGally:ggpairs so it renders faster
+#might be useful to add #| warning: false
+```
+
+## Jitterplot
+
+Flipper Length by Species
+
+```{r}
+#| fig.cap = "figure caption"
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm)) + 
+  geom_jitter(width = 0.2,
+              alpha = 0.5,
+              aes(color = species))+
+  geom_boxplot(fill = NA) +
+  theme_light() +
+  scale_color_manual(values = c("darkorchid4", "cyan4", "goldenrod")) +
+labs(x = "Penguin Species", y = "Flipper Length (mm)", 
+     title = "Palmer Archipelago Penguin Flippers")
+#remember the x and y in aes need to match the labels in the data frame
+#remember I only need to put things within aes if I want my aesthetics to be variable-dependent
+#adjusting width makes the dots in more column form, alpha = transparency of dots
+#check day2 to see how to set font and dot sizes
+
+```
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm)) +
+  geom_histogram(aes(fill = species), color = "magenta") +
+  facet_wrap(~species, ncol = 1)
+
+#color of polygons are changed with fill aesthetics, color of dots and lines are changed with color aesthetics
+#global changes to your colors should be done outside of aes()
+```
+
 
