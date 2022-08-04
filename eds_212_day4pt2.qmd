@@ -1,0 +1,44 @@
+---
+title: "Day 4 - Exploring Data"
+format: html
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| echo: false
+
+library(tidyverse)
+library(palmerpenguins)
+library(GGally)
+library(skimr)
+```
+
+### Exploratory Data Viz
+
+Check out your data a bit:
+
+Remember that typing view(penguins) in the console or code chunk will bring up the data frame for you to view the data
+
+in Quarto:
+putting #| warning in the opening code chunk: false makes it refrain from printing the warnings
+putting #| echo in the opening code chunk: false prevents it from printing the code 
+
+Similar capabilities in RMarkdown but different code
+
+```{r}
+#| include: false
+
+# tell me the column nmaes
+names(penguins)
+
+#tell me the dimensions?
+dim(penguins)
+#Can you show me the first six lines?
+head(penguins)
+#Can you show me the last 6 lines?
+  tail(penguins)
+```
+
+#| include: false in a code chunk makes the chunk not show up bc it's not being included
+
